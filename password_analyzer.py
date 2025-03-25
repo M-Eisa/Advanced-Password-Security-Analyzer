@@ -3,35 +3,40 @@ import re
 import math
 import time
 import webbrowser
-import json
 import string
 import hashlib
 import secrets
-import numpy as np
-from datetime import datetime
 from functools import lru_cache
-from flask import Flask, request, jsonify, render_template, send_from_directory, render_template_string
+from flask import Flask, request, jsonify, send_from_directory, render_template_string
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
 
 # Sample data for common passwords and patterns
 COMMON_PASSWORDS = {
-    "123456", "password", "12345678", "qwerty", "123456789", "12345", "1234",
-    "111111", "1234567", "dragon", "123123", "baseball", "abc123", "football",
-    "monkey", "letmein", "shadow", "master", "666666", "qwertyuiop", "123321",
-    "mustang", "1234567890", "michael", "654321", "superman", "1qaz2wsx", "7777777",
-    "121212", "000000", "qazwsx", "123qwe", "killer", "trustno1", "jordan",
-    "jennifer", "zxcvbnm", "asdfgh", "hunter", "buster", "soccer", "harley",
-    "batman", "andrew", "tigger", "sunshine", "iloveyou", "2000", "charlie",
-    "robert", "thomas", "hockey", "ranger", "daniel", "starwars", "klaster",
-    "112233", "george", "computer", "michelle", "jessica", "pepper", "1111",
-    "zxcvbn", "555555", "11111111", "131313", "freedom", "777777", "pass",
-    "maggie", "159753", "aaaaaa", "ginger", "princess", "joshua", "cheese",
-    "amanda", "summer", "love", "ashley", "nicole", "chelsea", "biteme",
-    "matthew", "access", "yankees", "987654321", "dallas", "austin", "thunder",
-    "taylor", "matrix", "mobilemail", "mom", "monitor", "monitoring", "montana",
-    "moon", "moscow"
+    "123456", "password", "123456789", "12345", "12345678",
+    "1234567", "123123", "qwerty", "111111", "abc123",
+    "password1", "admin", "welcome", "monkey", "login",
+    "letmein", "sunshine", "master", "hello", "football",
+    "iloveyou", "princess", "rockyou", "solo", "starwars",
+    "whatever", "dragon", "passw0rd", "trustno1", "access",
+    "shadow", "superman", "batman", "jordan", "harley",
+    "matrix", "buster", "hunter", "thomas", "ginger",
+    "1qaz2wsx", "1q2w3e4r", "qazwsx", "asdfgh", "zxcvbn",
+    "qwertyuiop", "asdfghjkl", "zxcvbnm", "!@#$%^&*", "qwerty123",
+    "2000", "2001", "2010", "2011", "2020", "2021", "2022", "2023",
+    "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997",
+    "1998", "1999", "2002", "2003", "2004", "2005", "2006", "2007",
+    "2008", "2009", "2012", "2013", "2014", "2015", "2016", "2017",
+    "2018", "2019", "2024", "2025"
+    "yankees", "liverpool", "chelsea", "arsenal", "baseball",
+    "soccer", "hockey", "basketball", "football", "running",
+    "pokemon", "samsung", "iphone", "google", "michelle",
+    "andrea", "nicole", "jennifer", "ashley", "amanda",
+    "aaaaaa", "zzzzzz", "abcdef", "abcabc", "a1b2c3",
+    "aa123456", "654321", "123abc", "1234abcd", "1234qwer",
+    "changeme", "secret", "password123", "welcome123", "admin123",
+    "temp", "guest", "default", "pass", "pw"
 }
 
 KEYBOARD_PATTERNS = [
@@ -53,8 +58,8 @@ DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sun
 # Names of common services (for pattern detection)
 SERVICES = ["gmail", "yahoo", "hotmail", "facebook", "twitter", "instagram",
             "linkedin", "snapchat", "tiktok", "reddit", "amazon", "netflix",
-            "spotify", "apple", "google", "microsoft", "github", "gitlab",
-            "bitbucket", "jira", "youtube", "discord", "zoom", "teams", "skype"]
+            "spotify", "apple", "google", "microsoft", "github", "outlook",
+            "wechat", "excel", "youtube", "discord", "zoom", "teams", "skype"]
 
 # Entropy and scoring thresholds
 ENTROPY_THRESHOLD = {
