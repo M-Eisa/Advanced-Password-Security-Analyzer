@@ -12,7 +12,7 @@ from flask import Flask, request, jsonify, send_from_directory, render_template_
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
 
-# Sample data for common passwords and patterns
+# Common passwords and patterns
 COMMON_PASSWORDS = {
     "123456", "password", "123456789", "12345", "12345678",
     "1234567", "123123", "qwerty", "111111", "abc123",
@@ -28,7 +28,8 @@ COMMON_PASSWORDS = {
     "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997",
     "1998", "1999", "2002", "2003", "2004", "2005", "2006", "2007",
     "2008", "2009", "2012", "2013", "2014", "2015", "2016", "2017",
-    "2018", "2019", "2024", "2025"
+    "2018", "2019", "2024", "2025", "toronto", "paris", "nyc", "london",
+    "tokyo", "moscow", "berlin", "losangeles", "shanghai", "beijing",
     "yankees", "liverpool", "chelsea", "arsenal", "baseball",
     "soccer", "hockey", "basketball", "football", "running",
     "pokemon", "samsung", "iphone", "google", "michelle",
