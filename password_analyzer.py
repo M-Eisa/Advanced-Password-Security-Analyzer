@@ -21,7 +21,7 @@ COMMON_PASSWORDS = {
     "iloveyou", "princess", "rockyou", "solo", "starwars",
     "whatever", "dragon", "passw0rd", "trustno1", "access",
     "shadow", "superman", "batman", "jordan", "harley",
-    "matrix", "buster", "hunter", "thomas", "ginger",
+    "matrix", "buster", "hunter", "thomas", "123",
     "1qaz2wsx", "1q2w3e4r", "qazwsx", "asdfgh", "zxcvbn",
     "qwertyuiop", "asdfghjkl", "zxcvbnm", "!@#$%^&*", "qwerty123",
     "2000", "2001", "2010", "2011", "2020", "2021", "2022", "2023",
@@ -1340,6 +1340,6 @@ HTML_TEMPLATE = '''
 
 if __name__ == '__main__':
     url = "http://127.0.0.1:5000/"
-    print(f"Dash app is running. If the browser does not open automatically, click here: {url}")
+    print(f"Flask app is running. If the browser does not open automatically, click here: {url}")
     webbrowser.open(url)
     app.run(debug=False)
