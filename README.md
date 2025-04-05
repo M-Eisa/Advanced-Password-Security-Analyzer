@@ -58,9 +58,3 @@ A comprehensive Python-based tool designed to evaluate password strength, detect
    ```bash
    python password_analyzer.py  
    ```
-
-## 🔒 Security Considerations
-- Never store passwords in plain text
-- Implement additional authentication mechanisms
-- Regularly update and patch dependencies
-
