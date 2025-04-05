@@ -41,7 +41,6 @@ A comprehensive Python-based tool designed to evaluate password strength, detect
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/M-Eisa/Advanced-Password-Security-Analyzer.git
-   cd Advanced-Password-Security-Analyzer
    ```
 
 2. **Create Virtual Environment** (Recommended)
