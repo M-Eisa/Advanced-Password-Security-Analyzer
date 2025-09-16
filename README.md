@@ -17,7 +17,7 @@ A comprehensive Python-based tool designed to evaluate password strength, detect
 
 ### Technical Innovations
 - **Advanced Entropy Calculation**: Sophisticated algorithm considering character diversity and hidden patterns
-- **Machine Learning-Enhanced Pattern Recognition**: Detects complex password vulnerabilities
+- **Comprehensive Pattern Analysis**: Detects complex password vulnerabilities
 - **Secure Hash Comparison**: Safe prefix-based breach database checking
 
 ## ⚙️ Technical Stack
